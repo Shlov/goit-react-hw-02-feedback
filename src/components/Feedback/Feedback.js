@@ -4,6 +4,12 @@ import { nanoid } from 'nanoid';
 import {Option} from './Feedback.styled';
 
 
+const firstLetterToUppercase = (str) => {
+  return `${str.charAt(0).toUpperCase()}${str.slice(1)}`
+}
+
+const ch = firstLetterToUppercase('name')
+console.log(ch);
 
 
 export class Feedback extends Component {
@@ -13,17 +19,35 @@ export class Feedback extends Component {
     bad: 0
   }
   
+  toVote (option) {
+    // console.dir(event.target.name);
+      this.setState(state => ({[option]: (state[option] + 1)}));
+      console.log(Object.values(this.state).reduce((a,b) => {return a+b}, 0));
+  }
+  countTotalFeedback () {
+    console.log(Object.values(this.state).reduce((a,b) => {return a+b}, 0))
+    return Object.values(this.state).reduce((a,b) => {return a+b}, 0);
+  }
+
+  countPositiveFeedbackPercentage () {
+
+  }
+
   
   render () {
     const options = this.props.valuations
+    // const votes = 
     
-    console.log(options);
     return (
       <>
         <h2>Please leave feedback</h2>
         {options.map(option => 
-        <Option>{option}</Option>)}
-        <p>dadads</p>
+        <Option onClick = {() => {this.toVote(option)}} name = {option}>{firstLetterToUppercase(option)}</Option>)}
+        <h3>Statistics</h3>
+        {options.map(option => 
+          <p>{firstLetterToUppercase(option)}: {this.state[option]}</p>)}
+          <p>Total: {() => {this.countTotalFeedback()}}</p>
+          {/* <p>Positive: {countPositiveFeedbackPercentage}</p> */}
       </>
     )
   }
