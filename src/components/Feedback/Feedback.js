@@ -27,7 +27,12 @@ export class Feedback extends Component {
   }
 
   countPositiveFeedbackPercentage () {
-
+    console.log(Object.values(this.state).reduce((a,b) => {return a+b}, 0));
+    console.log(this.state.good);
+    // console.log();
+    const total = Object.values(this.state).reduce((a,b) => {return a+b}, 0);
+    const positive = this.state.good
+    return total ? (positive / total * 100) : '0'
   }
   
   render () {
@@ -42,7 +47,7 @@ export class Feedback extends Component {
         {options.map(option => 
           <p>{firstLetterToUppercase(option)}: {this.state[option]}</p>)}
           <p>Total: {this.countTotalFeedback()}</p>
-          {/* <p>Positive: {countPositiveFeedbackPercentage}</p> */}
+          <p>Positive: {this.countPositiveFeedbackPercentage()}</p>
       </>
     )
   }
