@@ -20,23 +20,18 @@ export class Feedback extends Component {
   }
   
   toVote (option) {
-    // console.dir(event.target.name);
       this.setState(state => ({[option]: (state[option] + 1)}));
-      console.log(Object.values(this.state).reduce((a,b) => {return a+b}, 0));
   }
-  countTotalFeedback () {
-    console.log(Object.values(this.state).reduce((a,b) => {return a+b}, 0))
+  countTotalFeedback = () => {
     return Object.values(this.state).reduce((a,b) => {return a+b}, 0);
   }
 
   countPositiveFeedbackPercentage () {
 
   }
-
   
   render () {
     const options = this.props.valuations
-    // const votes = 
     
     return (
       <>
@@ -46,7 +41,7 @@ export class Feedback extends Component {
         <h3>Statistics</h3>
         {options.map(option => 
           <p>{firstLetterToUppercase(option)}: {this.state[option]}</p>)}
-          <p>Total: {() => {this.countTotalFeedback()}}</p>
+          <p>Total: {this.countTotalFeedback()}</p>
           {/* <p>Positive: {countPositiveFeedbackPercentage}</p> */}
       </>
     )
