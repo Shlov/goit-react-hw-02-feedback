@@ -1,4 +1,5 @@
 import { Title } from "./Section.styled";
+// import { Section } from './Section.styled';
 
 
 export const Section = ({title, children}) => {
