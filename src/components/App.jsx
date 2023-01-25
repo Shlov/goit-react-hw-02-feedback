@@ -19,8 +19,6 @@ export class App extends Component {
   }
 
   toVote = (option) => {
-    console.log(this.state)
-    console.log(option)
     this.setState(prevState => ({[option]: (prevState[option] + 1)}));
   }
 
