@@ -13,10 +13,6 @@ export class App extends Component {
     neutral: 0,
     bad: 0
   }
-  
-  firstLetterToUppercase = (str) => {
-    return `${str.charAt(0).toUpperCase()}${str.slice(1)}`
-  }
 
   toVote = (option) => {
     this.setState(prevState => ({[option]: (prevState[option] + 1)}));
@@ -41,8 +37,7 @@ export class App extends Component {
       <Section title="Please leave feedback">
         <FeedbackOptions
           valuations={options}
-          onLeaveFeedback={this.toVote}
-          onUppercase = {this.firstLetterToUppercase}/>
+          onLeaveFeedback={this.toVote}/>
       </Section>
       <Section title="Statistics">
         {total() ? <Statistics 

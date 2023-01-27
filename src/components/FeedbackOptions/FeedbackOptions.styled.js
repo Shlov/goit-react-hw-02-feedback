@@ -18,6 +18,7 @@ export const Option = styled.button`
   box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
   color: hsl(0, 0%, 100%);
   color: inherit;
+  text-transform: capitalize;
   
   :hover {
     box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
